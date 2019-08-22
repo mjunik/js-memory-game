@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JS memory game</title>
+    <meta name="author" content="Monika Junik">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+
+    <h1 class="title">Memory game</h1>
+
+    <div class="board">
+        <div id="js_gameBoard"></div>
+        <div class="board-overlay hidden" id="js_gameBoardOverlay">
+            <h2>Congrats!</h2>
+        </div>
+    </div>
+
+    <h2 class="moves">Moves: <span id="js_movesCount">0</span></h2>
+
+    <button class="btn" type="button" id="js_startGameBtn">Start new game!</button>
+
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
