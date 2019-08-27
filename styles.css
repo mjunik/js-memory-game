@@ -13,6 +13,7 @@ body {
     font-weight: 300;
     font-size: 1.5em;
     background-color: var(--cyan20);
+    overflow-y: hidden;
 }
 
 .wrapper {
@@ -93,4 +94,19 @@ body {
 
 .btn:focus {
     outline: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    font-size: .5em;
+}
+
+a, a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--cyan500);
 }
