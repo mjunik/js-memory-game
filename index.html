@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <title>JS memory game</title>
     <meta name="author" content="Monika Junik">
+    <link rel="icon" href="./tile-images/tile_3.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="styles.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,12 +18,16 @@
 
     <div class="board">
         <div id="js_gameBoard"></div>
-        <div class="board-overlay hidden" id="js_gameBoardOverlay">
-            <h2>Congrats!</h2>
+        <div class="board-overlay" id="js_gameBoardOverlay">
+            <p>Press the button below to start a game!</p>
         </div>
     </div>
 
-    <h2 class="moves">Moves: <span id="js_movesCount">0</span></h2>
+    <div class="moves">
+        Moves: <span id="js_movesCount">0</span>
+        &emsp;|&emsp;
+        Time: <span id="js_timer">0</span>s
+    </div>
 
     <button class="btn" type="button" id="js_startGameBtn">Start new game!</button>
 

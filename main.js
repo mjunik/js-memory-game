@@ -1,11 +1,14 @@
 const memoryGame = {
-    tilesNumber: 16,
+    tilesNumber: 20,
     movesCount: 0,
+    timer: 0,
     tiles: [],
+    timerInterval: null,
 
     gameBoard: document.getElementById('js_gameBoard'),
     congratulationsOverlay: document.getElementById('js_gameBoardOverlay'),
     movesCountHolder: document.getElementById('js_movesCount'),
+    timerHolder: document.getElementById('js_timer'),
 
     startGame() {
         this.resetGame();
@@ -13,14 +16,18 @@ const memoryGame = {
         this.generateTiles();
 
         this.displayBoard();
+
+        this.startTimer();
     },
 
     resetGame() {
         this.tiles = [];
         this.movesCount = 0;
+        this.timer = 0;
         this.gameBoard.innerHTML = '';
         this.congratulationsOverlay.classList.add('hidden');
         this.movesCountHolder.innerText = this.movesCount;
+        this.timerHolder.innerText = this.timer;
     },
 
     generateTiles() {
@@ -41,7 +48,7 @@ const memoryGame = {
     displayBoard() {
         // add tiles to the board
         this.tiles.forEach((tile) => {
-            this.gameBoard.innerHTML += `<div class="tile" data-tile="${tile}"></div>`;
+            this.gameBoard.innerHTML += `<div class="tile" data-tile="${tile}" style="background-image: url('./tile-images/question-mark.png')"></div>`;
         });
 
         // add on click action to every tile
@@ -67,8 +74,19 @@ const memoryGame = {
 
             this.checkMatch(activeTiles);
 
-            this.showCongratulations();
+            this.finishGame();
         }
+    },
+
+    startTimer() {
+        this.timerInterval = setInterval(() => {
+            this.timer++;
+            this.timerHolder.innerText = this.timer;
+        }, 1000);
+    },
+
+    stopTimer() {
+        clearInterval(this.timerInterval);
     },
 
     showTile(tile) {
@@ -79,7 +97,7 @@ const memoryGame = {
 
     hideTile(tile) {
         setTimeout(() => {
-            tile.style.backgroundImage = 'none';
+            tile.style.backgroundImage = "url('./tile-images/question-mark.png')";
             tile.classList.remove('active');
         }, 750);
     },
@@ -108,10 +126,12 @@ const memoryGame = {
         this.movesCountHolder.innerText = this.movesCount;
     },
 
-    showCongratulations() {
+    finishGame() {
         const matchedTiles = document.querySelectorAll('.match');
         if (matchedTiles.length === this.tilesNumber) {
+            this.stopTimer();
             setTimeout(() => {
+                this.congratulationsOverlay.innerHTML = `<p>Congratulations!<br/><br/>You've finished the game<br/>with ${this.movesCount} moves in ${this.timer} seconds</p>`;
                 this.congratulationsOverlay.classList.remove('hidden');
             }, 250);
         }
