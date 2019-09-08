@@ -13,7 +13,6 @@ body {
     font-weight: 300;
     font-size: 1.5em;
     background-color: var(--cyan20);
-    overflow-y: hidden;
 }
 
 .wrapper {
@@ -97,8 +96,6 @@ body {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
     font-size: .5em;
 }
 
